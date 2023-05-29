@@ -1,6 +1,10 @@
 from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
 from django.db import models
 
+from django.core.checks.messages import Error
+from django.db import models
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+
 
 class MyAccountManager(BaseUserManager):
     def create_user(self, first_name, last_name, username, email, password=None):
@@ -12,10 +16,12 @@ class MyAccountManager(BaseUserManager):
 
         # Tạo đối tượng user mới
         user = self.model(
-            email=self.normalize_email(email=email),  # Chuyển email về dạng bình thường
+            # Chuyển email về dạng bình thường
+            email=self.normalize_email(email=email),
             username=username,
             first_name=first_name,
             last_name=last_name,
+            is_staff=True,
         )
 
         user.set_password(password)
@@ -48,14 +54,14 @@ class Account(AbstractBaseUser):
     # required
     date_joined = models.DateTimeField(auto_now_add=True)
     last_login = models.DateTimeField(auto_now_add=True)
-    is_admin = models.BooleanField(default=False)
-    is_staff = models.BooleanField(default=False)
+    is_admin = models.BooleanField(default=True)
+    is_staff = models.BooleanField(default=True)
     is_active = models.BooleanField(default=False)
-    is_superadmin = models.BooleanField(default=False)
+    is_superadmin = models.BooleanField(default=True)
 
-    USERNAME_FIELD = 'email'  # Trường quyêt định khi login
-    REQUIRED_FIELDS = ['username', 'first_name',
-                       'last_name']  # Các trường yêu cầu khi đk tài khoản (mặc định đã có email), mặc định có password
+    USERNAME_FIELD = 'email'    # Trường quyêt định khi login
+    # Các trường yêu cầu khi đk tài khoản
+    REQUIRED_FIELDS = ['username', 'first_name', 'last_name', 'password']
 
     objects = MyAccountManager()
 
@@ -63,7 +69,10 @@ class Account(AbstractBaseUser):
         return self.email
 
     def has_perm(self, perm, obj=None):
-        return self.is_admin  # Admin có tất cả quyền trong hệ thống
+        return self.is_admin    # Admin có tất cả quyền trong hệ thống
 
     def has_module_perms(self, add_label):
         return True
+
+    def full_name(self):
+        return  self.last_name + " " + self.first_name

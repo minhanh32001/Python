@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'account',
     'category',
-    'store'
+    'store',
+    'carts',
 ]
 
 MIDDLEWARE = [
@@ -57,7 +58,7 @@ ROOT_URLCONF = 'Watchour.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

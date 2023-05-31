@@ -1,5 +1,7 @@
-# from orders.models import OrderProduct
+
 from django.contrib import messages
+
+from orders.models import OrderProduct
 from store.forms import ReviewForm
 from django.shortcuts import get_object_or_404, redirect, render
 from django.core.paginator import Paginator
@@ -44,10 +46,10 @@ def product_detail(request, category_slug, product_slug=None):
             cart_id=_cart_id(request)
         )
 
-    # try:
-    #     orderproduct = OrderProduct.objects.filter(user=request.user, product_id=single_product.id).exists()
-    # except Exception:
-    orderproduct = None ## Phair sua cho nay
+    try:
+        orderproduct = OrderProduct.objects.filter(user=request.user, product_id=single_product.id).exists()
+    except Exception:
+        orderproduct = None
 
     reviews = ReviewRating.objects.filter(product_id=single_product.id, status=True)
 
@@ -80,9 +82,9 @@ def submit_review(request, product_id):
             review = ReviewRating.objects.get(user__id=request.user.id, product__id=product_id)
             form = ReviewForm(request.POST, instance=review)
             form.save()
-            messages.success(request, "Thank you! Your review has been updated.")
+            messages.success(request, "Cảm ơn bạn đã đánh giá")
             return redirect(url)
-        except Exception:
+        except:
             form = ReviewForm(request.POST)
             if form.is_valid():
                 data = ReviewRating()
@@ -93,5 +95,5 @@ def submit_review(request, product_id):
                 data.product_id = product_id
                 data.user_id = request.user.id
                 data.save()
-                messages.success(request, "Thank you! Your review has been submitted.")
+                messages.success(request, "Cảm ơn bạn đã đánh giá")
                 return redirect(url)

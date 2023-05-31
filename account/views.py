@@ -3,7 +3,7 @@ from django.contrib import messages, auth
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 
-# from orders.models import Order, OrderProduct
+from orders.models import Order, OrderProduct
 from carts.models import Cart, CartItem
 from .forms import RegistrationForm
 from account.models import Account
@@ -127,21 +127,21 @@ def dashboard(request):
 
     render: Trang lịch sử mua hàng (dashboard.html)
     """
-    # orders = Order.objects.filter(user=request.user).order_by("-updated_at")
-    # order_products = OrderProduct.objects.filter(user=request.user)
+    orders = Order.objects.filter(user=request.user).order_by("-updated_at")
+    order_products = OrderProduct.objects.filter(user=request.user)
 
-    # page = request.GET.get('page')
-    # page = page or 1
-    # paginator = Paginator(orders, 3)
-    # paged_order = paginator.get_page(page)
-    # order_count = orders.count()
-    #
-    # context = {
-    #     'orders': paged_order,
-    #     'order_count': order_count,
-    #     'order_products': order_products,
-    # }
-    # return render(request, "account/dashboard.html", context=context)
+    page = request.GET.get('page')
+    page = page or 1
+    paginator = Paginator(orders, 3)
+    paged_order = paginator.get_page(page)
+    order_count = orders.count()
+
+    context = {
+        'orders': paged_order,
+        'order_count': order_count,
+        'order_products': order_products,
+    }
+    return render(request, "account/dashboard.html", context=context)
 
 
 def forgotPassword(request):

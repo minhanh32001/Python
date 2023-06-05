@@ -1,52 +1,52 @@
-{% extends 'base.html' %}
-{% load static %}
-
-{% block content %}
+{% extends 'base.html' %} {% load static %} {% block content %}
 <!-- ========================= SECTION MAIN ========================= -->
 <section class="section-intro padding-y-sm">
-    <div class="container">
-        <div class="intro-banner-wrap">
-            {% include "includes/alerts.html" %}
-            <img src="{% static 'images/banners/dongho.jpg' %}" class="img-fluid rounded">
-        </div>
-
-    </div> <!-- container //  -->
+  <div class="container">
+    <div class="intro-banner-wrap">
+      {% include "includes/alerts.html" %}
+      <img src="{% static 'images/banners/dongho.jpg' %}" class="img-fluid rounded" />
+    </div>
+  </div>
+  <!-- container //  -->
 </section>
 <!-- ========================= SECTION MAIN END// ========================= -->
 
 <!-- ========================= SECTION  ========================= -->
 <section class="section-name padding-y-sm">
-    <div class="container">
-        <header class="section-heading">
-            <a href="{% url 'store' %}" class="btn btn-outline-primary float-right">Xem tất cả</a>
-            <h3 class="section-title">Sản phẩm bán chạy</h3>
-        </header><!-- sect-heading -->
-        <div class="row">
-            {% for product in products %}
-                <div class="col-md-4">
-                    <figure class="card card-product-grid">
-                        <div class="img-wrap">
-                            <img src="{{ product.images.url }}" />
-                        </div>
-                        <figcaption class="info-wrap">
-                            <div class="fix-height">
-                                <a href="{{ product.get_url }}" class="title">{{ product.product_name }}</a>
-                                <div class="price-wrap mt-2">
-                                    <span class="price">{{ product.price }} VND</span>
-                                </div>
-                            </div>
-                            {% if product.stock > 0 %}
-                            <p>Còn <span class="b">{{product.stock}}</span> chiếc</p>
-                            {% else %}
-                            <h5 class="text-danger">Hết hàng</h5>
-                            {% endif %}
-                            <a href="{{ product.get_url }}" class="btn btn-block btn-primary">Xem chi tiết</a>
-                        </figcaption>
-                    </figure>
-                </div>
-            {% endfor %}
-        </div> <!-- row.// -->
-    </div><!-- container // -->
+  <div class="container">
+    <header class="section-heading">
+      <a href="{% url 'store' %}" class="btn btn-outline-primary float-right">Xem tất cả</a>
+      <h3 class="section-title">Sản phẩm bán chạy</h3>
+    </header>
+    <!-- sect-heading -->
+    <div class="row">
+      {% for product in products %}
+      <div class="col-md-4">
+        <figure class="card card-product-grid">
+          <div class="img-wrap">
+            <img src="{{ product.images.url }}" />
+          </div>
+          <figcaption class="info-wrap">
+            <div class="fix-height">
+              <a href="{{ product.get_url }}" class="title">{{ product.product_name }}</a>
+              <div class="price-wrap mt-2">
+                <span class="price">{{ product.price }} VND</span>
+              </div>
+            </div>
+            {% if product.stock > 0 %}
+            <p>Còn <span class="b">{{product.stock}}</span> chiếc</p>
+            {% else %}
+            <h5 class="text-danger">Hết hàng</h5>
+            {% endif %}
+            <a href="{{ product.get_url }}" class="btn btn-block btn-primary">Xem chi tiết</a>
+          </figcaption>
+        </figure>
+      </div>
+      {% endfor %}
+    </div>
+    <!-- row.// -->
+  </div>
+  <!-- container // -->
 </section>
 <!-- ========================= SECTION  END// ========================= -->
 {% endblock %}

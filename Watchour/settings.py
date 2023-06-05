@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'category',
     'store',
     'carts',
-    'orders'
+    'orders',
+    'compressor',
 ]
 
 MIDDLEWARE = [
@@ -147,3 +148,9 @@ MEDIA_ROOT = BASE_DIR / 'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 TIME_ZONE = 'Asia/Ho_Chi_Minh'
+
+COMPRESS_ROOT = BASE_DIR / 'static'
+
+COMPRESS_ENABLED = True
+
+STATICFILES_FINDERS = ('compressor.finders.CompressorFinder',)

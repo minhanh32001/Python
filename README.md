@@ -6,6 +6,7 @@
 
 - Ngoài thư mục của project, chạy terminal `npm install`
 - Build tailwindcss: `npx tailwindcss -i ./static/src/input.css -o ./static/src/output.css --watch`
+- Command live auto reload before runserver : `python manage.py livereload`
 
 - Cd vào thư mục của project, chạy terminal `pip install -r requirements.txt`
 - `py manage.py runserver` hoặc `py3 manage.py runserver` hoặc `django-admin manage.py runserver`

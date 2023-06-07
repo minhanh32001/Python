@@ -1,31 +1,50 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
 <!-- ========================= SECTION CONTENT ========================= -->
 <section class="bg-gray-50 dark:bg-gray-900">
-  <div class="md:h-screen lg:py-0 flex flex-col items-center justify-center px-6 py-8 mx-auto">
+  <div
+    class="min-h-[calc(100vh-168px)] h-full flex flex-col items-center justify-center px-6 py-8 mx-auto">
     <form
+      action="{% url 'register' %}"
+      method="POST"
       class="dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700 w-full bg-white rounded-lg shadow">
       <div class="md:space-y-6 sm:p-8 p-6 space-y-4">
-          <form class="md:space-y-6 space-y-4" action="{% url 'login' %}"
-          method="POST">
-          <h1 class="md:text-2xl dark:text-white text-xl font-bold leading-tight tracking-tight text-center text-gray-900">
+        <form class="md:space-y-6 space-y-4" action="{% url 'login' %}" method="POST">
+          <h1
+            class="md:text-2xl dark:text-white text-xl font-bold leading-tight tracking-tight text-center text-gray-900">
             Watchour
-        </h1>
+          </h1>
           {% csrf_token %}
-          <div class="">
-
+          <div class="grid grid-cols-2 gap-4 mb-2">
+            <div>
+              <label
+                for="last_name"
+                class="dark:text-white block mb-2 text-sm font-medium text-gray-900"
+                >Họ</label
+              >
+              {{form.last_name}}
+            </div>
+            <div>
+              <label
+                for="first_name"
+                class="dark:text-white block mb-2 text-sm font-medium text-gray-900"
+                >Tên</label
+              >
+              {{form.first_name}}
+            </div>
           </div>
           <div>
             <label for="email" class="dark:text-white block mb-2 text-sm font-medium text-gray-900"
               >Email</label
             >
-            <input
-              value="{{ email }}"
-              type="email"
-              name="email"
-              id="email"
-              class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="name@company.com"
-              required="" />
+            {{form.email}}
+          </div>
+          <div>
+            <label
+              for="phone_number"
+              class="dark:text-white block mb-2 text-sm font-medium text-gray-900"
+              >Số điện thoại</label
+            >
+            {{form.phone_number}}
           </div>
           <div>
             <label
@@ -33,48 +52,30 @@
               class="dark:text-white block mb-2 text-sm font-medium text-gray-900"
               >Mật khẩu</label
             >
-            <input
-              value="{{ password }}"
-              type="password"
-              name="password"
-              id="password"
-              placeholder="••••••••"
-              class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              required="" />
+            {{form.password}}
           </div>
-          <div class="flex items-center justify-between">
-            <div class="flex items-start">
-              <div class="flex items-center h-5">
-                <input
-                  id="remember"
-                  aria-describedby="remember"
-                  type="checkbox"
-                  class="bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800 w-4 h-4 border border-gray-300 rounded"
-                  required="" />
-              </div>
-              <div class="ml-3 text-sm">
-                <label for="remember" class="dark:text-gray-300 text-gray-500">Nhớ tôi</label>
-              </div>
-            </div>
-            <a
-              href="{% url 'forgotPassword' %}"
-              class="text-primary-600 hover:underline dark:text-primary-500 text-sm font-medium"
-              >Quên mật khẩu?</a
+          <div>
+            <label
+              for="confirm_password"
+              class="dark:text-white block mb-2 text-sm font-medium text-gray-900"
+              >Nhập lại mật khẩu</label
             >
+            {{form.confirm_password}}
           </div>
           <button
             type="submit"
             class="w-full text-white bg-primary-color hover:bg-primary-hover-color focus:ring-4 focus:outline-none focus:ring-primary-hover-color font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-color dark:hover:bg-primary-color dark:focus:ring-primary-hover-color">
-            Đăng nhập
+            Đăng ký
           </button>
           <p class="dark:text-gray-400 text-sm font-light text-gray-500">
-            Bạn chưa có tài khoản?
+            Đã có tài khoản?
             <a
-              href="{% url 'register' %}"
+              href="{% url 'login' %}"
               class="text-primary-600 hover:underline dark:text-primary-500 font-medium"
-              >Đăng ký</a
+              >Đăng nhập</a
             >
           </p>
+          {{ form.email.errors }} {{ form.non_field_errors }}
         </form>
       </div>
     </form>
@@ -82,7 +83,6 @@
 </section>
 {% comment %}
 <section class="section-content padding-y">
-  <!-- ============================ COMPONENT REGISTER   ================================= -->
   <div class="card mx-auto" style="max-width: 520px; margin-top: 40px">
     <article class="card-body">
       {% include "includes/alerts.html" %}

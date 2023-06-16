@@ -60,7 +60,7 @@
           <a href="{% url 'cart' %}" class="">
             <button type="button" class="relative flex w-10 h-10 justify-center items-center text-sm font-medium text-center text-white bg-primary-hover-color rounded-full hover:bg-[#ffe1a1] focus:ring-2 focus:outline-none focus:ring-primary-color dark:bg-gray-hover-color">
               <i class="fa fa-shopping-cart text-2xl"></i>
-              <span class="sr-only">Notifications</span>
+              <span class="sr-only">Cart</span>
               {% if cart_count > 0 %}
               <div class="-top-2 -right-2 dark:border-gray-900 absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full">{{ cart_count }}</div>
               {% endif %}
@@ -88,7 +88,7 @@
               </div>
               <ul class="py-2" aria-labelledby="user-menu-button">
                 <li>
-                  <a href="{% url 'dashboard' %}" class="hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-pring-primary-color dark:hover:text-white block px-4 py-2 text-sm text-gray-700">Thông tin</a>
+                  <a href="{% url 'dashboard' %}" class="hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-pring-primary-color dark:hover:text-white block px-4 py-2 text-sm text-gray-700">Lịch sử đơn hàng</a>
                 </li>
                 {% comment %}
                 <li>
@@ -167,7 +167,7 @@
           </li>
 
           <li class="md:hidden">
-            <a href="{% url 'dashboard' %}" class="md:bg-transparent md:text-gray-color md:hover:text-gray-hover-color md:p-0 md:dark:text-primary-color dark:bg-primary-color md:dark:bg-transparent hover:bg-primary-color text-gray-color hover:text-white block py-2 pl-3 pr-4 bg-transparent rounded-lg" aria-current="page">Thông tin</a>
+            <a href="{% url 'dashboard' %}" class="md:bg-transparent md:text-gray-color md:hover:text-gray-hover-color md:p-0 md:dark:text-primary-color dark:bg-primary-color md:dark:bg-transparent hover:bg-primary-color text-gray-color hover:text-white block py-2 pl-3 pr-4 bg-transparent rounded-lg" aria-current="page">Lịch sử đơn hàng</a>
           </li>
           <li class="">
             <a href="{% url 'store' %}" class="md:hover:bg-transparent md:hover:underline-offset-2 md:text-gray-color md:hover:text-gray-hover-color md:p-0 md:dark:text-primary-color dark:bg-primary-color md:dark:bg-transparent hover:bg-primary-color text-gray-color hover:text-white block py-2 pl-3 pr-4 bg-transparent rounded-lg" aria-current="page">Tất cả sản phẩm</a>

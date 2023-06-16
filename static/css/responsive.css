@@ -32,15 +32,10 @@
   }
 
   .section-header .logo {
-    max-height: 100px;
+    max-height: 80px;
     width: auto;
   }
   .section-header .header-main .brand-wrap {
-    margin-bottom: 1rem;
-    display: inline-block;
-  }
-  .section-header .header-main .search {
-    margin-bottom: 1rem;
   }
 
   .item-feature {

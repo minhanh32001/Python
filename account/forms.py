@@ -29,7 +29,7 @@ class RegistrationForm(forms.ModelForm):
         self.fields['password'].widget.attrs['placeholder'] = 'Nhập mật khẩu'
         self.fields['confirm_password'].widget.attrs['placeholder'] = 'Nhập lại mật khẩu'
         for field in self.fields:
-            self.fields[field].widget.attrs['class'] = 'form-control'
+            self.fields[field].widget.attrs['class'] = 'bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-color focus:border-primary-color block w-full p-2.5 dark:bg-gray-700 dark:border-gray-color dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-color dark:focus:border-primary-color focus:outline-none transition duration-150 ease-in-out'
 
     def clean(self):
         cleaned_data = super(RegistrationForm, self).clean()

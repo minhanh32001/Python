@@ -76,6 +76,7 @@ def search(request):
 
 
 def submit_review(request, product_id):
+    title = 'Watchour - Submit Review'
     url = request.META.get('HTTP_REFERER')
     if request.method == "POST":
         try:

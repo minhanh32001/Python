@@ -22,7 +22,7 @@ def store(request, category_slug=None):
 
     page = request.GET.get('page')
     page = page or 1
-    paginator = Paginator(products, 3)
+    paginator = Paginator(products, 6)
     paged_products = paginator.get_page(page)
     product_count = products.count()
 
@@ -76,6 +76,7 @@ def search(request):
 
 
 def submit_review(request, product_id):
+    title = 'Watchour - Submit Review'
     url = request.META.get('HTTP_REFERER')
     if request.method == "POST":
         try:

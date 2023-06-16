@@ -38,12 +38,14 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'livereload',
     'django.contrib.staticfiles',
     'account',
     'category',
     'store',
     'carts',
-    'orders'
+    'orders',
+    'compressor',
 ]
 
 MIDDLEWARE = [
@@ -54,6 +56,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'livereload.middleware.LiveReloadScript',
 ]
 
 ROOT_URLCONF = 'Watchour.urls'
@@ -69,6 +72,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'category.context_processors.menu_links',
+                'carts.context_processors.counter',
             ],
         },
     },
@@ -147,3 +152,9 @@ MEDIA_ROOT = BASE_DIR / 'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 TIME_ZONE = 'Asia/Ho_Chi_Minh'
+
+COMPRESS_ROOT = BASE_DIR / 'static'
+
+COMPRESS_ENABLED = True
+
+STATICFILES_FINDERS = ('compressor.finders.CompressorFinder',)

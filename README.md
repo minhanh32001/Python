@@ -9,15 +9,15 @@
 
 ## B1: Chạy lần lượt theo hướng dẫn sau
 
-Trong thư mục Python, chạy terminal theo thứ tự từng dòng một:
-`npm install`
-`pip install django-livereload-server`
-`python -m pip install django-compressor`
-nếu chỉnh sửa đến giao diện, chạy dòng này:`npx tailwindcss -i ./static/src/input.css -o ./static/src/output.css --watch` và `python manage.py livereload` hoặc `python3 manage.py livereload`
+- Chạy terminal theo thứ tự từng dòng một:
+  `npm install`
 
-- install requirements.txt:
+- Install requirements.txt:
   `pip install -r requirements.txt`
-- `py manage.py runserver` hoặc `py3 manage.py runserver` hoặc `django-admin manage.py runserver`
-- Nếu báo thiếu dependencty, thay requirement.txt bằng file [này](https://github.com/chungpv-1008/GreatKart/blob/master/requirements.txt) và chạy lại bước đầu tiên
-- Sau khi chạy server xong, truy cập localhost:8000/admin, đăng nhập với thông tin `nongmanhbh2001@gmail.com`, `minhanh123`
-- Sau khi thêm đủ, chạy lần lượt các lệnh sau: `git checkout -b add_prod`, `git commit -m "add products"`, `git push origin add_prod`
+  nếu chỉnh sửa đến giao diện, chạy dòng này:
+  `npx tailwindcss -i ./static/src/input.css -o ./static/src/output.css --watch`
+  `python manage.py livereload` hoặc `python3 manage.py livereload`
+
+- Chạy server:
+- `py manage.py runserver` hoặc `py3 manage.py runserver` hoặc `python3 manage.py runserver` hoặc `django-admin manage.py runserver`
+- Sau khi chạy server xong, truy cập localhost:8000, đăng nhập với thông tin `1234@gmail.com`, `1234` hoặc đăng kí mới.

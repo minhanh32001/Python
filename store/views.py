@@ -1,6 +1,6 @@
 
 from django.contrib import messages
-
+import Levenshtein
 from orders.models import OrderProduct
 from store.forms import ReviewForm
 from django.shortcuts import get_object_or_404, redirect, render
@@ -22,7 +22,7 @@ def store(request, category_slug=None):
 
     page = request.GET.get('page')
     page = page or 1
-    paginator = Paginator(products, 6)
+    paginator = Paginator(products, 15)
     paged_products = paginator.get_page(page)
     product_count = products.count()
 
@@ -61,18 +61,17 @@ def product_detail(request, category_slug, product_slug=None):
     }
     return render(request, 'store/product_detail.html', context=context)
 
-
 def search(request):
-    if 'q' in request.GET:
-        q = request.GET.get('q')
-        products = Product.objects.order_by('-created_date').filter(Q(product_name__icontains=q) | Q(description__icontains=q))
-        product_count = products.count()
+    query = request.GET.get('q', '')  # Get the search query from the request
+
+    products = Product.objects.filter(Q(product_name__icontains=query))
+
     context = {
         'products': products,
-        'q': q,
-        'product_count': product_count
+        'q': query,
+        'product_count': products.count()
     }
-    return render(request, 'store/store.html', context=context)
+    return render(request, 'store/store.html', context)
 
 
 def submit_review(request, product_id):

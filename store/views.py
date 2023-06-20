@@ -1,6 +1,6 @@
 
 from django.contrib import messages
-import Levenshtein
+# import Levenshtein
 from orders.models import OrderProduct
 from store.forms import ReviewForm
 from django.shortcuts import get_object_or_404, redirect, render

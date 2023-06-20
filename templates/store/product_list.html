@@ -1,0 +1,10 @@
+<!-- product_list.html -->
+<h1>Product List</h1>
+<ul>
+    {% for product in products %}
+    <li>{{ product.product_name}},
+    <a href="{% url 'delete_product' product.id %}">Delete Product</a>,
+    <a href="{% url 'modify_product' product.id %}">Modify Product</a></li>
+    <!-- Display other product details as desired -->
+    {% endfor %}
+</ul>

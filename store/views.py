@@ -1,6 +1,6 @@
-
 from django.contrib import messages
-import Levenshtein
+from django.contrib.auth.decorators import login_required, user_passes_test
+
 from orders.models import OrderProduct
 from store.forms import ReviewForm
 from django.shortcuts import get_object_or_404, redirect, render
@@ -11,6 +11,7 @@ from store.models import Product, ReviewRating
 from carts.models import Cart, CartItem
 from category.models import Category
 from carts.views import _cart_id
+from .forms import ProductForm
 
 
 def store(request, category_slug=None):
@@ -31,6 +32,67 @@ def store(request, category_slug=None):
         'product_count': product_count,
     }
     return render(request, 'store/store.html', context=context)
+
+
+def is_admin(user):
+    return user.is_authenticated and user.is_admin
+
+
+@login_required(login_url='login')
+@user_passes_test(is_admin, login_url='login')
+def modify_product(request, product_id):
+    product = Product.objects.get(pk=product_id)
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES, instance=product)
+        if form.is_valid():
+            form.save()
+            return redirect('product_list')
+    else:
+        form = ProductForm(instance=product)
+    context = {
+        'form': form,
+        'product': product
+    }
+    return render(request, 'store/modify_product.html', context)
+
+
+@login_required(login_url='login')
+@user_passes_test(is_admin, login_url='login')
+def product_list(request):
+    products = Product.objects.all()
+    context = {
+        'products': products
+    }
+    return render(request, 'store/product_list.html', context)
+
+
+@login_required(login_url='login')
+@user_passes_test(is_admin, login_url='login')
+def delete_product(request, product_id):
+    product = Product.objects.get(pk=product_id)
+    if request.method == 'POST':
+        product.delete()
+        return redirect('product_list')
+    context = {
+        'product': product
+    }
+    return render(request, 'store/delete_product.html', context)
+
+
+@login_required(login_url='login')
+@user_passes_test(is_admin, login_url='login')
+def add_product(request):
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    else:
+        form = ProductForm()
+    context = {
+        'form': form
+    }
+    return render(request, 'store/add_product.html', context)
 
 
 def product_detail(request, category_slug, product_slug=None):
@@ -60,6 +122,7 @@ def product_detail(request, category_slug, product_slug=None):
         'reviews': reviews,
     }
     return render(request, 'store/product_detail.html', context=context)
+
 
 def search(request):
     query = request.GET.get('q', '')  # Get the search query from the request

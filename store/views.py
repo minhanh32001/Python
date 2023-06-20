@@ -1,10 +1,6 @@
 from django.contrib import messages
-<<<<<<< HEAD
-# import Levenshtein
-=======
 from django.contrib.auth.decorators import login_required, user_passes_test
 
->>>>>>> product_management
 from orders.models import OrderProduct
 from store.forms import ReviewForm
 from django.shortcuts import get_object_or_404, redirect, render

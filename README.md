@@ -13,7 +13,7 @@
 - `py manage.py runserver` hoặc `django-admin manage.py runserver`
 ## Login 
 - Có thể trải nghiệm trang web mà không cần đăng nhập
-- Đăng nhập với thông tin người dùng bình thường: `1234@gmail.com` `1234` hoặc đăng kí mới.
+- Đăng nhập với thông tin người dùng bình thường: đăng kí mới hoặc ``` ```.
 - Đăng nhập với quyền admin: `nongmanhbh2001@gmail.com` `minhanh123`
 ## Những sửa đổi mới
 - Cho phép thay đổi chế độ sáng tối 

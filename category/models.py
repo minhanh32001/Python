@@ -3,9 +3,6 @@ from django.urls import reverse
 
 
 class Category(models.Model):
-    """
-    class thể loại
-    """
     category_name = models.CharField(max_length=50, unique=True)
     # Trường slug là để định danh cho 1 category
     slug = models.SlugField(max_length=100, unique=True)

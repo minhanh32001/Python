@@ -5,11 +5,6 @@ from store.models import Product
 
 
 class Order(models.Model):
-    """
-    class đơn hàng
-
-    Chứa thông tin thanh toán, thông tin người nhận, số tiền phải trả.
-    """
     STATUS = (
         ('New', 'New'),
         ('Accepted', 'Accepted'),
@@ -47,11 +42,6 @@ class Order(models.Model):
 
 
 class OrderProduct(models.Model):
-    """
-    class sản phẩm đã đặt hàng
-
-    Chứa thông tin các sản phẩm của đơn hàng.
-    """
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
     user = models.ForeignKey(Account, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)

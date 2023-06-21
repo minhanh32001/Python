@@ -21,7 +21,6 @@ class MyAccountManager(BaseUserManager):
             username=username,
             first_name=first_name,
             last_name=last_name,
-            is_staff=True,
         )
 
         user.set_password(password)
@@ -38,7 +37,6 @@ class MyAccountManager(BaseUserManager):
         )
         user.is_admin = True
         user.is_active = True
-        user.is_staff = True
         user.is_superadmin = True
         user.save(using=self._db)
         return user
@@ -55,12 +53,10 @@ class Account(AbstractBaseUser):
     date_joined = models.DateTimeField(auto_now_add=True)
     last_login = models.DateTimeField(auto_now_add=True)
     is_admin = models.BooleanField(default=True)
-    is_staff = models.BooleanField(default=True)
     is_active = models.BooleanField(default=False)
     is_superadmin = models.BooleanField(default=False)
 
-    USERNAME_FIELD = 'email'    # Trường quyêt định khi login
-    # Các trường yêu cầu khi đk tài khoản
+    USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username', 'first_name', 'last_name', 'password']
 
     objects = MyAccountManager()
@@ -68,11 +64,5 @@ class Account(AbstractBaseUser):
     def __str__(self):
         return self.email
 
-    def has_perm(self, perm, obj=None):
-        return self.is_admin    # Admin có tất cả quyền trong hệ thống
-
-    def has_module_perms(self, add_label):
-        return True
-
     def full_name(self):
-        return  self.last_name + " " + self.first_name
+        return self.last_name + " " + self.first_name

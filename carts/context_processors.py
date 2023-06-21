@@ -4,9 +4,6 @@ from store.views import _cart_id
 
 
 def counter(request):
-    """
-    Hiển thị số lượng sản phẩm trong giỏ hàng.
-    """
     if 'admin' in request.path:
         return {}
     else:

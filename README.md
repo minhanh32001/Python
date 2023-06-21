@@ -10,6 +10,7 @@
 ## Chạy terminal theo các lệnh dưới đây:
   `npm install`
 ## Install requirements.txt:
+Chạy lần lượt các lệnh dưới đây
   `pip install -r requirements.txt`
   `python manage.py livereload` hoặc `python3 manage.py livereload`
 ## Chạy server:

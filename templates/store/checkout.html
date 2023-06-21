@@ -60,67 +60,67 @@
       </div>
     </div>
 
-    <div class="flex items-start justify-center mt-8 bg-white">
+    <div class="dark:bg-gray-900 flex items-start justify-center pt-8 bg-white">
       <div class="lg:px-8 max-w-lg px-4 mx-auto">
         <form action="{% url 'place_order' %}" method="POST" class="grid grid-cols-6 gap-4">
           {% csrf_token %}
           <div class="col-span-3">
-            <label for="FirstName" class="block text-xs font-medium text-gray-700"> Họ </label>
+            <label for="FirstName" class="dark:text-gray-400 block mb-2 text-xs font-medium text-gray-700"> Họ </label>
 
-            <input type="text" id="FirstName" name="first_name" class="sm:text-sm w-full mt-1 border-gray-200 rounded-md shadow-sm" required />
+            <input type="text" id="FirstName" name="first_name" class="bg-gray-50 focus:ring-[#f7cc72] focus:border-[#f7cc72] dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#f7cc72] dark:focus:border-[#f7cc72] block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg" required />
           </div>
 
           <div class="col-span-3">
-            <label for="LastName" class="block text-xs font-medium text-gray-700"> Tên </label>
+            <label for="LastName" class="dark:text-gray-400 block mb-2 text-xs font-medium text-gray-700"> Tên </label>
 
-            <input type="text" id="LastName" name="last_name" class="sm:text-sm w-full mt-1 border-gray-200 rounded-md shadow-sm" required />
+            <input type="text" id="LastName" name="last_name" class="bg-gray-50 focus:ring-[#f7cc72] focus:border-[#f7cc72] dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#f7cc72] dark:focus:border-[#f7cc72] block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg" required />
           </div>
 
           <div class="col-span-3">
-            <label for="email" class="block text-xs font-medium text-gray-700"> Email </label>
+            <label for="email" class="dark:text-gray-400 block mb-2 text-xs font-medium text-gray-700"> Email </label>
 
-            <input type="email" id="email" name="email" class="sm:text-sm w-full mt-1 border-gray-200 rounded-md shadow-sm" required />
+            <input type="email" id="email" name="email" class="bg-gray-50 focus:ring-[#f7cc72] focus:border-[#f7cc72] dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#f7cc72] dark:focus:border-[#f7cc72] block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg" required />
           </div>
 
           <div class="col-span-3">
-            <label for="phone" class="block text-xs font-medium text-gray-700"> Số điện thoại </label>
+            <label for="phone" class="dark:text-gray-400 block mb-2 text-xs font-medium text-gray-700"> Số điện thoại </label>
 
-            <input type="text" id="phone" name="phone" class="sm:text-sm w-full mt-1 border-gray-200 rounded-md shadow-sm" required />
+            <input type="text" id="phone" name="phone" class="bg-gray-50 focus:ring-[#f7cc72] focus:border-[#f7cc72] dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#f7cc72] dark:focus:border-[#f7cc72] block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg" required />
           </div>
 
           <fieldset class="col-span-6">
-            <legend class="block text-sm font-medium text-gray-700">Địa chỉ</legend>
+            <legend class="dark:text-gray-400 block text-sm font-medium text-gray-700">Địa chỉ</legend>
 
-            <div class="mt-1 -space-y-px bg-white rounded-md shadow-sm">
+            <div class="mt-1 -space-y-px bg-white rounded-lg shadow-sm">
               <div>
                 <label for="address_line_1" class="sr-only"> Địa chỉ </label>
-                <input type="text" id="address_line_1" name="address_line_1" placeholder="Địa chỉ" class="rounded-t-md focus:z-10 sm:text-sm relative w-full mt-1 border-gray-200" required />
+                <input type="text" id="address_line_1" name="address_line_1" placeholder="Địa chỉ" class="rounded-t-lg focus:z-10 bg-gray-50 focus:ring-[#f7cc72] focus:border-[#f7cc72] dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#f7cc72] dark:focus:border-[#f7cc72] w-full" required />
               </div>
 
               <div class="flex">
                 <div class="flex-1">
                   <label for="province" class="sr-only"> Thành phố </label>
 
-                  <input type="text" id="province" name="province" placeholder="Thành phố" class="rounded-es-md focus:z-10 sm:text-sm relative w-full border-gray-200" required />
+                  <input type="text" id="province" name="province" placeholder="Thành phố" class="rounded-es-lg focus:z-10 bg-gray-50 focus:ring-[#f7cc72] focus:border-[#f7cc72] dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#f7cc72] dark:focus:border-[#f7cc72] w-full" required />
                 </div>
 
                 <div class="-ms-px flex-1">
                   <label for="district" class="sr-only"> Quận/Huyện </label>
 
-                  <input type="text" id="district" name="district" placeholder="Quận/Huyện" class="focus:z-10 sm:text-sm relative w-full border-gray-200" required />
+                  <input type="text" id="district" name="district" placeholder="Quận/Huyện" class="focus:z-10 bg-gray-50 focus:ring-[#f7cc72] focus:border-[#f7cc72] dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#f7cc72] dark:focus:border-[#f7cc72] w-full" required />
                 </div>
                 <div class="-ms-px flex-1">
                   <label for="ward" class="sr-only"> Phường/Xã </label>
 
-                  <input type="text" id="ward" name="ward" placeholder="Phường/Xã" class="rounded-ee-md focus:z-10 sm:text-sm relative w-full border-gray-200" required />
+                  <input type="text" id="ward" name="ward" placeholder="Phường/Xã" class="rounded-ee-lg focus:z-10 bg-gray-50 focus:ring-[#f7cc72] focus:border-[#f7cc72] dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#f7cc72] dark:focus:border-[#f7cc72] w-full" required />
                 </div>
               </div>
             </div>
           </fieldset>
           <div class="col-span-6">
             {% comment %} ghi chú {% endcomment %}
-            <label for="order_note" class="block text-xs font-medium text-gray-700"> Ghi chú </label>
-            <textarea name="order_note" id="order_note" rows="2" class="w-full mt-1 border-gray-200 rounded-md shadow-sm"></textarea>
+            <label for="order_note" class="dark:text-gray-400 block mb-2 text-xs font-medium text-gray-700"> Ghi chú </label>
+            <textarea name="order_note" id="order_note" rows="2" class="bg-gray-50 focus:ring-[#f7cc72] focus:border-[#f7cc72] dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#f7cc72] dark:focus:border-[#f7cc72] block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg"></textarea>
           </div>
           <div class="col-span-6">
             <button type="submit" name="submit" class="block mt-4 w-full text-white bg-primary-color hover:bg-primary-hover-color focus:ring-4 focus:outline-none focus:ring-primary-color font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-color dark:hover:bg-primary-color dark:focus:ring-primary-hover-color">Đặt hàng</button>

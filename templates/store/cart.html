@@ -1,5 +1,5 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
-<div class="min-h-[calc(100vh-204px)] sm:min-h-[calc(100vh-168px)] h-full bg-white">
+<div class="min-h-[calc(100vh-204px)] sm:min-h-[calc(100vh-168px)] h-full bg-white dark:bg-gray-900">
   {% if not cart_items %}
   <h1 class="mb-10 text-2xl font-bold text-center">Giỏ hàng trống</h1>
   <br />
@@ -38,12 +38,12 @@
   <div class="md:flex md:space-x-6 xl:px-0 justify-center max-w-5xl px-6 mx-auto">
     <div class="md:w-2/3 rounded-lg">
       {% for cart_item in cart_items %}
-      <div class="sm:flex sm:justify-start justify-between p-6 mb-6 bg-white border rounded-lg shadow-lg">
+      <div class="sm:flex sm:justify-start dark:bg-gray-800 dark:border-gray-700 justify-between p-6 mb-6 bg-white border rounded-lg shadow-lg">
         <img src="{{ cart_item.product.images.url }}" alt="product-image" class="sm:w-40 w-full rounded-lg" />
         <div class="sm:ml-4 sm:flex sm:w-full sm:justify-between">
           <div class="sm:mt-0 mt-5">
-            <h2 class="text-lg font-bold text-gray-900">{{ cart_item.product.product_name }}</h2>
-            <p class="mt-1 text-xs text-gray-700">{{ cart_item.product.price }} VND mỗi món</p>
+            <h2 class="text-gray-color dark:text-gray-400 text-lg font-bold">{{ cart_item.product.product_name }}</h2>
+            <p class="dark:text-gray-400 mt-1 text-xs text-gray-700">{{ cart_item.product.price }} VND mỗi món</p>
           </div>
           <div class="sm:space-y-6 sm:mt-0 sm:block sm:space-x-6 flex justify-between mt-4">
             {% comment %}
@@ -55,13 +55,13 @@
             </form>
             {% endcomment %}
             <div class="flex items-center justify-end border-gray-100">
-              <a href="{% url 'remove_cart' cart_item.product.id cart_item.id %}" class="hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white px-2 py-1 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg" type="button">
+              <a href="{% url 'remove_cart' cart_item.product.id cart_item.id %}" class="hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white dark:bg-gray-700 px-2 py-1 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg" type="button">
                 <i class="fa fa-minus"></i>
               </a>
-              <input type="text" class="w-8 h-8 text-xs text-center bg-white border outline-none" value="{{ cart_item.quantity }}" />
+              <input type="text" class="dark:bg-gray-700 w-8 h-8 text-xs text-center bg-white border outline-none" value="{{ cart_item.quantity }}" />
               <form action="{% url 'add_cart' cart_item.product.id %}" method="post">
                 {% csrf_token %}
-                <button class="hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white px-2 py-1 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg" type="submit" id="button-plus">
+                <button class="hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-800 dark:bg-gray-700 dark:hover:text-white px-2 py-1 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg" type="submit" id="button-plus">
                   <i class="fa fa-plus"></i>
                 </button>
               </form>
@@ -82,14 +82,14 @@
       {% endfor %}
     </div>
     <!-- Sub total -->
-    <div class="md:mt-0 md:w-1/3 h-full p-6 mt-6 bg-white border rounded-lg shadow-lg">
+    <div class="md:mt-0 md:w-1/3 dark:bg-gray-900 dark:border-gray-700 h-full p-6 mt-6 bg-white border rounded-lg shadow-lg">
       <div class="flex justify-between mb-2">
-        <p class="text-gray-700">Tổng giá</p>
-        <p class="text-gray-700">{{ total }}</p>
+        <p class="dark:text-gray-400 text-gray-700">Tổng giá</p>
+        <p class="dark:text-gray-400 text-gray-700">{{ total }}</p>
       </div>
       <div class="flex justify-between">
-        <p class="text-gray-700">Thuế</p>
-        <p class="text-gray-700">{{ tax }}</p>
+        <p class="dark:text-gray-400 text-gray-700">Thuế</p>
+        <p class="dark:text-gray-400 text-gray-700">{{ tax }}</p>
       </div>
       <hr class="my-4" />
       <div class="flex justify-between">

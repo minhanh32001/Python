@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from . import views
+from store import views as store_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,4 +27,8 @@ urlpatterns = [
     path('carts/', include('carts.urls')),
     path('account/', include('account.urls')),
     path('orders/', include('orders.urls')),
+    path('store/product-list/', store_views.product_list, name='product_list'),
+    # path('store/add-product/', store_views.add_product, name='add_product'),
+    # path('store/delete-product/<int:product_id>/', store_views.delete_product, name='delete_product'),
+    # path('store/modify-product/<int:product_id>/', store_views.modify_product, name='modify_product'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

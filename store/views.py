@@ -59,7 +59,9 @@ def modify_product(request, product_id):
 @login_required(login_url='login')
 @user_passes_test(is_admin, login_url='login')
 def product_list(request):
-    products = Product.objects.all()
+    # products = Product.objects.all()
+    # get all products date created in descending order
+    products = Product.objects.all().order_by('-created_date')
     context = {
         'products': products
     }
